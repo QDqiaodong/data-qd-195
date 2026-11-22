@@ -1,0 +1,12 @@
+{
+  "species":["salt"],
+  "tanks":[
+    {"id":"A","capacity_l":"20","volume_l":"10","mass_g":{"salt":"100"}},
+    {"id":"B","capacity_l":"20","volume_l":"10","mass_g":{"salt":"0"}},
+    {"id":"C","capacity_l":"20","volume_l":"0","mass_g":{"salt":"0"}}
+  ],
+  "steps":[
+    {"id":"simultaneous","transfers":[{"id":"ab","source":"A","target":"B","volume_l":"5"},{"id":"bc","source":"B","target":"C","volume_l":"5"}]},
+    {"id":"mixed","transfers":[{"id":"bc","source":"B","target":"C","volume_l":"3"}]}
+  ]
+}
