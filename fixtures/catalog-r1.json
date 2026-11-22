@@ -1,0 +1,20 @@
+{
+  "species": ["salt"],
+  "tanks": [
+    {"id": "A", "capacity_l": "20", "volume_l": "10", "mass_g": {"salt": "100"}},
+    {"id": "B", "capacity_l": "20", "volume_l": "10", "mass_g": {"salt": "100"}},
+    {"id": "C", "capacity_l": "20", "volume_l": "5", "mass_g": {"salt": "50"}},
+    {"id": "D", "capacity_l": "20", "volume_l": "0", "mass_g": {"salt": "0"}},
+    {"id": "E", "capacity_l": "20", "volume_l": "0", "mass_g": {"salt": "0"}}
+  ],
+  "steps": [
+    {"id": "s1", "transfers": [
+      {"id": "ac", "source": "A", "target": "C", "volume_l": "5"},
+      {"id": "bd", "source": "B", "target": "D", "volume_l": "5"}
+    ]},
+    {"id": "s2", "transfers": [
+      {"id": "draw", "source": "C", "target": "E", "volume_l": "4"},
+      {"id": "dc", "source": "D", "target": "C", "volume_l": "5"}
+    ]}
+  ]
+}

@@ -17,6 +17,11 @@ def load(path):
     if len(raw)>8000000:raise ValueError('input over 8MB')
     return json.loads(raw.decode('utf-8'),object_pairs_hook=pairs,parse_constant=constant)
 
+def load_bounded(path,maximum):
+    with open(path,'rb') as f:raw=f.read(maximum+1)
+    if len(raw)>maximum:raise ValueError(f'input over {maximum} bytes')
+    return json.loads(raw.decode('utf-8'),object_pairs_hook=pairs,parse_constant=constant)
+
 def publish(path,result):
     payload=(json.dumps(result,ensure_ascii=False,sort_keys=True,indent=2,allow_nan=False)+'\n').encode('utf-8')
     target=Path(path);target.parent.mkdir(parents=True,exist_ok=True);temporary=None

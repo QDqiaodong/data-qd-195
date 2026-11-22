@@ -35,6 +35,19 @@ uv pip check --python .venv/bin/python
 
 报告原子新建，不覆盖旧文件或符号链接。演示路径已存在时请改用新输出名；输入结构/约束或文件错误退出2，正常业务诊断见契约。已实际核验重复JSON键拒绝且不生成结果、同名输出字节不变及符号链接不覆盖。
 
+## 样本发布登记册
+
+离线样本发布登记册见 [登记册文档](docs/catalog.md)：按 v1 原模型计算逐来源证据，发布可追溯凭证，更正计划时仅撤回证据真的变了的凭证。命令入口：
+
+```sh
+python -m tank_transfer.catalog --store PATH init --revision r1 --source fixtures/catalog-r1.json
+python -m tank_transfer.catalog --store PATH issue --receipt rc-draw --kind transfer --step s2 --item draw
+python -m tank_transfer.catalog --store PATH revise --revision r2 --base r1 --source fixtures/catalog-r2.json
+python -m tank_transfer.catalog --store PATH read --receipt rc-draw --archive
+```
+
+合成样例为 `fixtures/catalog-r1.json` 与 `fixtures/catalog-r2.json`；自动测试 `tests/test_catalog.py` 覆盖最低验收场景、限额、幂等更正重试，以及提交前/提交后的进程强制终止恢复。
+
 ## 当前能力与后续集成
 
 封闭完全混合离散模型，只检查开/闭步状态；无化学反应、泵控制或外部进料。 合理新增需求可沿现有身份和结果接入外部进料/排放、配方切换和采样记录；当前尚未实现这些扩展，不保证固定数量未来题目。
