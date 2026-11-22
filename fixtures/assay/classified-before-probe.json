@@ -1,0 +1,129 @@
+{
+  "plan": {
+    "species": [
+      "salt"
+    ],
+    "tanks": [
+      {
+        "id": "A",
+        "capacity_l": "20",
+        "volume_l": "1",
+        "mass_g": {
+          "salt": "0"
+        }
+      },
+      {
+        "id": "B",
+        "capacity_l": "20",
+        "volume_l": "1",
+        "mass_g": {
+          "salt": "0"
+        }
+      },
+      {
+        "id": "C",
+        "capacity_l": "20",
+        "volume_l": "0",
+        "mass_g": {
+          "salt": "0"
+        }
+      },
+      {
+        "id": "D",
+        "capacity_l": "20",
+        "volume_l": "0",
+        "mass_g": {
+          "salt": "0"
+        }
+      },
+      {
+        "id": "E",
+        "capacity_l": "20",
+        "volume_l": "0",
+        "mass_g": {
+          "salt": "0"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "transfers": [
+          {
+            "id": "ac",
+            "source": "A",
+            "target": "C",
+            "volume_l": "0.5"
+          },
+          {
+            "id": "bc",
+            "source": "B",
+            "target": "C",
+            "volume_l": "0.5"
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "transfers": [
+          {
+            "id": "ad",
+            "source": "A",
+            "target": "D",
+            "volume_l": "0.5"
+          },
+          {
+            "id": "ca",
+            "source": "C",
+            "target": "A",
+            "volume_l": "0.5"
+          }
+        ]
+      }
+    ]
+  },
+  "species": "salt",
+  "unknown": [
+    {
+      "tank": "A",
+      "min_g": "0",
+      "max_g": "10"
+    },
+    {
+      "tank": "B",
+      "min_g": "0",
+      "max_g": "10"
+    }
+  ],
+  "observations": [
+    {
+      "id": "oa",
+      "at": {
+        "step": "s1",
+        "tank": "A"
+      },
+      "min_g_per_l": "9",
+      "max_g_per_l": "9"
+    }
+  ],
+  "target": {
+    "at": {
+      "step": "s2",
+      "tank": "D"
+    },
+    "limit_g_per_l": "5"
+  },
+  "probes": [
+    {
+      "id": "pX",
+      "at": {
+        "step": "s1",
+        "tank": "B"
+      },
+      "cut_g_per_l": [
+        "5"
+      ],
+      "cost": 1
+    }
+  ]
+}

@@ -48,6 +48,17 @@ python -m tank_transfer.catalog --store PATH read --receipt rc-draw --archive
 
 合成样例为 `fixtures/catalog-r1.json` 与 `fixtures/catalog-r2.json`；自动测试 `tests/test_catalog.py` 覆盖最低验收场景、限额、幂等更正重试，以及提交前/提交后的进程强制终止恢复。
 
+## 盐浓度分级补测决策
+
+离线补测决策工具见 [assay 文档](docs/assay.md)：容纳仅有上下界的未知初始盐质量，精确判断目标罐等级是否已确定；若未确定，在候选化验点中选出“无论读到哪一档都能判级”的最省一项。只化验员报告的档位参与决策，不拟合最可能初值、不访问设备。
+
+```sh
+python -m tank_transfer.assay plan   --input fixtures/assay/example-1.json --output run/assay-1.json
+python -m tank_transfer.assay verify --input fixtures/assay/example-1.json --report run/assay-1.json
+```
+
+报告同时给出每个可达等级的完整初值见证、每个不可达等级的加权矛盾证据，以及全部候选、全部档的可达等级集合；`verify` 仅凭 JOB 与报告独立复核见证、矛盾与推荐。合成样例见 `fixtures/assay/`，自动测试 `tests/test_assay.py` 覆盖两个必测例子、观测矛盾、已有化验分级、同价候选、非零固定贡献与分数闭步浓度、非法定位与越界物理、已有报告不被覆盖，以及报告篡改被拒。既有模拟与登记册入口的输入、输出与异常契约不变。
+
 ## 当前能力与后续集成
 
 封闭完全混合离散模型，只检查开/闭步状态；无化学反应、泵控制或外部进料。 合理新增需求可沿现有身份和结果接入外部进料/排放、配方切换和采样记录；当前尚未实现这些扩展，不保证固定数量未来题目。
