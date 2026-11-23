@@ -1,0 +1,44 @@
+{
+  "plan": {
+    "species": ["salt", "dye", "acid", "base", "sugar", "oil", "copper", "zinc"],
+    "tanks": [
+      {"id": "A", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "0", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "B", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "4", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "C", "capacity_l": "6", "volume_l": "0", "mass_g": {"salt": "0", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "D", "capacity_l": "8", "volume_l": "0", "mass_g": {"salt": "0", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "E", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "16", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "F", "capacity_l": "6", "volume_l": "0", "mass_g": {"salt": "0", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "G", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "0", "dye": "6", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "H", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "0", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "I", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "0", "dye": "6", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "J", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "4", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "K", "capacity_l": "6", "volume_l": "0", "mass_g": {"salt": "0", "dye": "0", "acid": "0", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}},
+      {"id": "L", "capacity_l": "6", "volume_l": "2", "mass_g": {"salt": "0", "dye": "0", "acid": "4", "base": "0", "sugar": "0", "oil": "0", "copper": "0", "zinc": "0"}}
+    ],
+    "steps": []
+  },
+  "actions": [
+    {"id": "a", "source": "A", "target": "C", "volume_l": "1", "cost": 1},
+    {"id": "b", "source": "B", "target": "C", "volume_l": "1", "cost": 1},
+    {"id": "c", "source": "J", "target": "C", "volume_l": "1", "cost": 1},
+    {"id": "d", "source": "E", "target": "D", "volume_l": "1", "cost": 1},
+    {"id": "e", "source": "H", "target": "D", "volume_l": "1", "cost": 1},
+    {"id": "f", "source": "G", "target": "F", "volume_l": "1", "cost": 1},
+    {"id": "g", "source": "I", "target": "F", "volume_l": "1", "cost": 1},
+    {"id": "h", "source": "A", "target": "D", "volume_l": "1", "cost": 1},
+    {"id": "i", "source": "B", "target": "D", "volume_l": "1", "cost": 2},
+    {"id": "j", "source": "E", "target": "C", "volume_l": "1", "cost": 1},
+    {"id": "k", "source": "G", "target": "D", "volume_l": "1", "cost": 1},
+    {"id": "l", "source": "J", "target": "F", "volume_l": "1", "cost": 1}
+  ],
+  "targets": [
+    {"tank": "C", "species": "salt", "min_g_per_l": "2", "max_g_per_l": "2"},
+    {"tank": "D", "species": "salt", "min_g_per_l": "4", "max_g_per_l": "4"},
+    {"tank": "F", "species": "dye", "min_g_per_l": "3", "max_g_per_l": "3"},
+    {"tank": "L", "species": "acid", "min_g_per_l": "2", "max_g_per_l": "2"}
+  ],
+  "reserves": [
+    {"tank": "E", "min_volume_l": "1"},
+    {"tank": "A", "min_volume_l": "0"}
+  ]
+}

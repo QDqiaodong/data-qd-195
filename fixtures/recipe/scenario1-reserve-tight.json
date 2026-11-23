@@ -1,0 +1,21 @@
+{
+  "plan": {
+    "species": ["salt"],
+    "tanks": [
+      {"id": "A", "capacity_l": "4", "volume_l": "2", "mass_g": {"salt": "0"}},
+      {"id": "B", "capacity_l": "4", "volume_l": "2", "mass_g": {"salt": "12"}},
+      {"id": "C", "capacity_l": "4", "volume_l": "0", "mass_g": {"salt": "0"}}
+    ],
+    "steps": []
+  },
+  "actions": [
+    {"id": "feed", "source": "B", "target": "A", "volume_l": "1", "cost": 1},
+    {"id": "draw", "source": "A", "target": "C", "volume_l": "1", "cost": 1}
+  ],
+  "targets": [
+    {"tank": "C", "species": "salt", "min_g_per_l": "2", "max_g_per_l": "2"}
+  ],
+  "reserves": [
+    {"tank": "A", "min_volume_l": "3"}
+  ]
+}
