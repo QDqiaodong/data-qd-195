@@ -1,0 +1,59 @@
+{
+ "plan": {
+  "species": [
+   "salt"
+  ],
+  "tanks": [
+   {
+    "id": "A",
+    "capacity_l": "4",
+    "volume_l": "1",
+    "mass_g": {
+     "salt": "0.4"
+    }
+   },
+   {
+    "id": "B",
+    "capacity_l": "4",
+    "volume_l": "1",
+    "mass_g": {
+     "salt": "0.6"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "s1",
+    "transfers": [
+     {
+      "id": "ba",
+      "source": "B",
+      "target": "A",
+      "volume_l": "1"
+     },
+     {
+      "id": "ab",
+      "source": "A",
+      "target": "B",
+      "volume_l": "1"
+     }
+    ]
+   }
+  ]
+ },
+ "species": "salt",
+ "quantum_g": "1",
+ "pins": [
+  {
+   "kind": "initial",
+   "item": "B",
+   "units": 1
+  },
+  {
+   "kind": "transfer",
+   "item": "ba",
+   "step": "s1",
+   "units": 0
+  }
+ ]
+}

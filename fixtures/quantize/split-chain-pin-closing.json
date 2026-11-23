@@ -1,0 +1,95 @@
+{
+ "plan": {
+  "species": [
+   "salt"
+  ],
+  "tanks": [
+   {
+    "id": "A",
+    "capacity_l": "4",
+    "volume_l": "4",
+    "mass_g": {
+     "salt": "1"
+    }
+   },
+   {
+    "id": "B",
+    "capacity_l": "4",
+    "volume_l": "0",
+    "mass_g": {
+     "salt": "0"
+    }
+   },
+   {
+    "id": "C",
+    "capacity_l": "4",
+    "volume_l": "0",
+    "mass_g": {
+     "salt": "0"
+    }
+   },
+   {
+    "id": "D",
+    "capacity_l": "4",
+    "volume_l": "0",
+    "mass_g": {
+     "salt": "0"
+    }
+   },
+   {
+    "id": "E",
+    "capacity_l": "4",
+    "volume_l": "0",
+    "mass_g": {
+     "salt": "0"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "s1",
+    "transfers": [
+     {
+      "id": "ab",
+      "source": "A",
+      "target": "B",
+      "volume_l": "1"
+     },
+     {
+      "id": "ac",
+      "source": "A",
+      "target": "C",
+      "volume_l": "1"
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "transfers": [
+     {
+      "id": "bd",
+      "source": "B",
+      "target": "D",
+      "volume_l": "1"
+     },
+     {
+      "id": "ce",
+      "source": "C",
+      "target": "E",
+      "volume_l": "1"
+     }
+    ]
+   }
+  ]
+ },
+ "species": "salt",
+ "quantum_g": "1",
+ "pins": [
+  {
+   "kind": "closing",
+   "item": "D",
+   "step": "s2",
+   "units": 1
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "plan": {
+  "species": [
+   "salt"
+  ],
+  "tanks": [
+   {
+    "id": "A",
+    "capacity_l": "4",
+    "volume_l": "4",
+    "mass_g": {
+     "salt": "1"
+    }
+   },
+   {
+    "id": "B",
+    "capacity_l": "4",
+    "volume_l": "0",
+    "mass_g": {
+     "salt": "0"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "s1",
+    "transfers": [
+     {
+      "id": "ab",
+      "source": "A",
+      "target": "B",
+      "volume_l": "1"
+     }
+    ]
+   }
+  ]
+ },
+ "species": "salt",
+ "quantum_g": "0.25",
+ "pins": []
+}

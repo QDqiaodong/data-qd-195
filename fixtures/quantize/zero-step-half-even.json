@@ -1,0 +1,21 @@
+{
+ "plan": {
+  "species": [
+   "salt"
+  ],
+  "tanks": [
+   {
+    "id": "A",
+    "capacity_l": "4",
+    "volume_l": "1",
+    "mass_g": {
+     "salt": "1.5"
+    }
+   }
+  ],
+  "steps": []
+ },
+ "species": "salt",
+ "quantum_g": "1",
+ "pins": []
+}
