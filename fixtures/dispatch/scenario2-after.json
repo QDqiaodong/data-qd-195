@@ -1,0 +1,20 @@
+{
+  "species": ["salt"],
+  "tanks": [
+    {"id": "W1", "capacity_l": "10", "volume_l": "10", "mass_g": {"salt": "0"}},
+    {"id": "W2", "capacity_l": "10", "volume_l": "0", "mass_g": {"salt": "0"}},
+    {"id": "X1", "capacity_l": "10", "volume_l": "10", "mass_g": {"salt": "0"}},
+    {"id": "X2", "capacity_l": "10", "volume_l": "0", "mass_g": {"salt": "0"}}
+  ],
+  "orders": [
+    {"id": "a", "source": "W1", "target": "W2", "volume_l": "1",
+     "pump": "P", "after": []},
+    {"id": "b", "source": "W1", "target": "W2", "volume_l": "1",
+     "pump": "P", "after": []},
+    {"id": "c", "source": "X1", "target": "X2", "volume_l": "1",
+     "pump": "Q", "after": ["b"]},
+    {"id": "d", "source": "X1", "target": "X2", "volume_l": "1",
+     "pump": "Q", "after": []}
+  ],
+  "tick_limit": 2
+}
