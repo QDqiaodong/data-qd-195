@@ -89,6 +89,20 @@ python -m tank_transfer.quantize --input fixtures/quantize/split-chain.json --ou
 
 合成样例见 `fixtures/quantize/`（含可重现的密集台账夹具 `dense.json` 及其规范结果复核说明）；自动测试 `tests/test_quantize.py` 覆盖全部验收场景、零步中点取偶、空转移步、非单位量子、不同步同名转移、错误 selector、域外 pin、末步物理无效优先于 pin 冲突、已有输出（含符号链接）不覆盖、输入排列不变性，并用独立核对器从 v1 精确证据复核取整域与逐步过账、在小输入上对照枚举求得的精确代价与平局结果，以及在 40 秒 CPU、256 MiB 虚拟内存上限内复核密集夹具的整份规范结果。既有模拟、登记册、化验、工单排程与配方入口的输入、输出与异常契约不变。
 
+## 离线事实表交付
+
+离线事实表交付见 [delivery 文档](docs/delivery.md)：一个生产库对应一个演练 ID，初始化完整 v1 计划为第 0 版，此后每次发布提交完整计划与预期版号，逐版生成精确事实表（初始罐、逐步序号、逐转移、逐闭步罐，含 0 记录保留）与相邻版增量包。生产库按保留容量 K（1..8）维护滑动窗口，持续交付 floor 引导快照与 floor 直达 head 的每个增量；各使用方登记后以自己的引导快照建立本地副本，只从本地游标逐包前进，确认回传后才释放窗口额度，阻挡方会被明确列出。双方只交换 JSON 数据包，不直接读写对方存储。
+
+```sh
+python -m tank_transfer.delivery --store PROD init --drill drill-1 --k 2 --plan fixtures/delivery/v0.json
+python -m tank_transfer.delivery --store PROD register --consumer grading
+python -m tank_transfer.delivery --store PROD snapshot --consumer grading > run/snap0.json
+python -m tank_transfer.replica --store REPLICA init --consumer grading --snapshot run/snap0.json
+python -m tank_transfer.delivery --store PROD publish --plan fixtures/delivery/v1.json --expect 0
+```
+
+合成样例见 `fixtures/delivery/`；自动测试 `tests/test_delivery.py` 覆盖验收场景的三版事实与增量（含指令不变但送出质量变化的行更新、删转移不删空步与闭步行、空增量独立确认）、步序/同名转移/等值数值与无关重排、K=2 窗口的阻挡-确认-放行与窗口外内容回收证据、发布与应用的提交前/提交后进程强制终止恢复、乱序包/伪造包/缺删除包/错用确认/末步物理无效，以及限额与游标校验。既有模拟、登记册、化验、工单排程、配方与整数台账入口的输入、输出与异常契约不变。
+
 ## 当前能力与后续集成
 
 封闭完全混合离散模型，只检查开/闭步状态；无化学反应、泵控制或外部进料。 合理新增需求可沿现有身份和结果接入外部进料/排放、配方切换和采样记录；当前尚未实现这些扩展，不保证固定数量未来题目。

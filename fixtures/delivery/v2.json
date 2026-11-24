@@ -1,0 +1,15 @@
+{
+  "species": ["salt"],
+  "tanks": [
+    {"id": "A", "capacity_l": "10", "volume_l": "2", "mass_g": {"salt": "4"}},
+    {"id": "B", "capacity_l": "10", "volume_l": "2", "mass_g": {"salt": "0"}},
+    {"id": "C", "capacity_l": "10", "volume_l": "0", "mass_g": {"salt": "0"}},
+    {"id": "D", "capacity_l": "10", "volume_l": "0", "mass_g": {"salt": "0"}}
+  ],
+  "steps": [
+    {"id": "s1", "transfers": [
+      {"id": "feed", "source": "A", "target": "D", "volume_l": "1"}
+    ]},
+    {"id": "s2", "transfers": []}
+  ]
+}
